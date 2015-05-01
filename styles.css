@@ -1,0 +1,39 @@
+*
+  {
+    /*box-sizing:border-box;*/
+    text-align: center;
+  }
+body,html
+  {
+    margin-top: 1em;
+    position:relative;
+    width:100%;
+    height:100%;
+    background-color: #0074B3;
+    font-family: 'Raleway', Helvetica, sans-serif; 
+    color: #fff;
+  }
+
+h1{
+  font-size: 4em;
+}
+
+.gameboard-container{
+  padding-top: 4em;
+}
+
+.piece{
+  width: 100px;
+  height: 100px;
+  border: 6px solid #EACA38;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.column{
+  display: inline-block;
+}
+
+.row{
+ 
+}
