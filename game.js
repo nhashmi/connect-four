@@ -15,16 +15,23 @@ $(document).ready(function(){
 
   // startGame();
 
-  // function changeColor(evt){
-
-  // }
 
   function playGame(){
+    redTurn = true;
     for (var i = 0; i < pieces.length; i++) {
-      var piece = $(pieces[i])
+      var piece = $(pieces[i]);
+
       piece.click(function(){
-        $(this).css("background", "red");
+        if (redTurn) {
+          $(this).css("background", "red");
+          redTurn = false;
+        } else {
+          $(this).css("background", "#000");
+          redTurn = true;
+        }
+        
       });
+
     }
   }
 
