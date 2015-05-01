@@ -34,6 +34,12 @@ h1{
   display: inline-block;
 }
 
-.row{
- 
+#start_over{
+  background-color: #0074B3;
+  color: #EACA38;
+  font-family: 'Raleway', Helvetica, sans-serif; 
+  font-size: 3em;
+  text-decoration: none;
+  cursor: pointer;
+  border:none;
 }

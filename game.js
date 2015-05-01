@@ -66,7 +66,6 @@ $(document).ready(function(){
           $(nextPieceUp).addClass("clickable");
           // Assign clickable to that piece  
         } else if (!$(this).hasClass("clicked")) {
-            alert("You can't click there yet!");
             // Iterate through column
             var thisColumn = this.classList[2];
             var clickableInColumn = $('.' + thisColumn);
