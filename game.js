@@ -7,20 +7,29 @@ $(document).ready(function(){
   }
 
   startGame();
-
+  hoverEffect();
 
   function playGame(){
     redTurn = true;
-
     for (var i = 0; i < pieces.length; i++) {
       var piece = $(pieces[i]);
       
       piece.click(function(){
         if (redTurn && !$(this).hasClass("clicked") && $(this).hasClass("clickable")) {
           $(this).addClass("clicked");
-          console.log(this)
+          $(this).addClass("red");
           $(this).css("background", "red");
+          // winCount = 1;
+          // var left = $(this).prevAll(".red").length
+          // console.log(left);
+          // var right = $(this).nextAll(".red").length
+          // console.log(right);
+          // winCount += left + right; 
+          // if (winCount==4){
+          //   alert("Red wins!");
+          // }
           redTurn = false;
+          checkWin();
           // Determine column 
           var classes = $(this)[0].classList;
           var parentClasses = $(this).parent()[0].classList;
@@ -44,8 +53,19 @@ $(document).ready(function(){
           // Assign clickable to that piece 
         } else if (!redTurn && !$(this).hasClass("clicked") && $(this).hasClass("clickable")) {
           $(this).addClass("clicked");
+          $(this).addClass("black");
           $(this).css("background", "#000");
+          // winCount = 1;
+          // var left = $(this).prevAll(".black").length
+          // console.log(left);
+          // var right = $(this).nextAll(".black").length
+          // console.log(right);
+          // winCount += left + right; 
+          // if (winCount==4){
+          //   alert("Black wins!");
+          // }
           redTurn = true;
+          checkWin();
           // Determine column 
           var classes = $(this)[0].classList;
           var parentClasses = $(this).parent()[0].classList;
@@ -74,6 +94,7 @@ $(document).ready(function(){
               if (piece.hasClass("clickable") && redTurn) {
                 console.log("red!")
                 $(piece).addClass("clicked");
+                $(piece).addClass("red");
                 $(piece).removeClass("clickable");
                 $(piece).css("background", "red");
                 // Determine column 
@@ -96,9 +117,20 @@ $(document).ready(function(){
                 $(nextPieceUp).addClass("clickable");
                 // Assign clickable to that piece
                 redTurn = false
+                // winCount = 1;
+                // var left = $(this).prevAll(".red").length
+                // console.log(left);
+                // var right = $(this).nextAll(".red").length
+                // console.log(right);
+                // winCount += left + right; 
+                // if (winCount==4){
+                //   alert("Red wins!");
+                // }
+                checkWin();
               } else if (piece.hasClass("clickable") && !redTurn){
                 console.log("black!")
                 $(piece).addClass("clicked");
+                $(piece).addClass("black");
                 $(piece).removeClass("clickable");
                 $(piece).css("background", "#000");
                 // Determine column 
@@ -121,6 +153,16 @@ $(document).ready(function(){
                 $(nextPieceUp).addClass("clickable");
                 // Assign clickable to that piece
                 redTurn = true
+                // winCount = 1;
+                // var left = $(this).prevAll(".black").length
+                // console.log(left);
+                // var right = $(this).nextAll(".black").length
+                // console.log(right);
+                // winCount += left + right; 
+                // if (winCount==4){
+                //   alert("Black wins!");
+                // }
+                checkWin();
               };
             }            
         } else {
@@ -136,9 +178,37 @@ $(document).ready(function(){
   playGame();
 
 
+  function checkWin(){
+    // Horizontal winning possibilities
+    for (var i = 0; i < 6; i++) {
+      var rowToCheck = $(".row-" + i)
+      console.log(rowToCheck)
+      // Count elements in row with the same class
+    };
+
+    // Vertical winning possibilities
 
 
+    // Diagonal wins
+  }
 
+
+function hoverEffect(){
+  $(".piece").hover(function(){
+    if (redTurn && !$(this).hasClass("clicked")){
+      $(this).css("background", "tomato")  
+    } else if (!$(this).hasClass("clicked")) {
+      $(this).css("background", "#333")
+    }
+  })
+
+  $(".piece").mouseout(function(){
+    if (!$(this).hasClass("clicked")) {
+      $(this).css("background", "#fff");
+    };
+  })
+
+}
 
 
 
